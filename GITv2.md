@@ -1,10 +1,10 @@
-GIT笔记
+# GIT笔记
 
-一、GIT是什么？
+## 一、GIT是什么
 
-​	GIT是一个分布式版本控制软件。
+​	GIT是一个分布式版本控制软件，用于多人协同工作。
 
-二、GIT的安装：
+## 二、GIT的安装
 
 ​	Linux安装：
 
@@ -34,7 +34,7 @@ GIT笔记
    sudo make install install-doc install-html install-info
    ```
 
-三、GIT的初始化：
+## 三、GIT的初始化
 
  在使用GIT前，请了解GIT的配置文件，GIT有三个配置文件：
 
@@ -70,9 +70,9 @@ GIT笔记
   Rick
   ```
 
-四、GIT基础操作：
+## 四、GIT基础操作
 
-  **获取GIT仓库**
+### 4.1 获取GIT仓库：
 
   获取GIT仓库有两种方式：
 
@@ -95,17 +95,15 @@ GIT笔记
   git clone https://github.com/git/git.git # 克隆git软件仓库，此命令会在当前目录下生成克隆软件的同名目录，并且在此目录中，生成.git文件夹。
   ```
 
- 
-
- **GIT的三个区**
+### 4.2 GIT的三个区：
 
   ![img](C:\Users\User\Desktop\work_word\word\GIT\git-threedir)
 
   GIT工具有三个区：
 
-1. working directory
-2. stage/index area
-3. commit history
+1. **working directory**
+2. **stage/index area**
+3. **commit history**
 
   这三个区的有各自的作用与状态：
 
@@ -113,7 +111,7 @@ GIT笔记
 2. stage/index area：缓存区，当使用`git add`命令将文件纳入git跟踪后，便会保存在这里。
 3. commit history：提交，当使用`git commit`命令将文件提交后，文件便从缓存区提交到commit history中，此时HEAD指针指向的位置；
 
-  假如在git初始化仓库中新建a.txt和b.txt文件，我们如何将他们纳入到git管理呢？如下：
+  假如在git初始化仓库中新建a.txt和b.txt文件，我们如何将他们纳入到GIT管理呢？如下：
 
   ```shell
   cd /home/test  # 进入git仓库目录
@@ -218,9 +216,7 @@ GIT笔记
   cat b.txt # 此时并没有增加的内容
   ```
 
-
-
-**GIT忽略文件**
+### 4.3 GIT忽略文件：
 
   有些在工作区的文件我们可能不想让它被GIT纳管，例如一些编译产生的临时文件等，这时就可以使用`.gitignore`配置文件来控制。
 
@@ -241,9 +237,7 @@ GIT笔记
   nothing to commit, working tree clean
   ```
 
-
-
-**查看已经缓存和未缓存的修改**
+### 4.4 查看已经缓存和未缓存的修改
 
   通常使用`git status`命令可以查看文件更改后是否缓存，例如更改b.txt文件。
 
@@ -273,9 +267,7 @@ GIT笔记
   +add test  # 新增加一行
   ```
 
-
-
-**提交更新**
+### 4.5 提交更新
 
   前面我已经简单的使用过`git commit`命令来提交版本，但是没有具体介绍此命令，下面我们开始介绍GIT中的提交版本。我们先更新b.txt文件，写入“add commit test"，然后使用`git add`命令缓存，最后使用`git commit`命令提交此次更新。
 
@@ -328,13 +320,11 @@ GIT笔记
 
 
 
-**跳过缓存区**
+### 4.6 GIT跳过缓存区
 
   前面介绍中，我们说如果一个已经被跟踪的文件，修改后没有使用`git add`命令添加到缓存区，直接使用`git commit`命令提交后，则修改的内容不会被记录到git中。缓存区虽然能让我们很详细知道此次提交的细节，但是这样也会显得很繁琐。如果不想将文件添加到缓存区而直接commit提交，则可以使用`git commit -a -m "add new txt"`命令跳过缓存区，直接提交。
 
-
-
-**移除文件**
+### 4.7 GIT移除文件
 
   如果有些文件在工作目中已经`commit`到GIT版本管理中后，不想再使用GIT进行管理的时候，可以使用`rm`命令将其删除后，再使用`git rm`命令删除。
 
@@ -387,9 +377,7 @@ GIT笔记
   nothing to commit, working tree clean
   ```
 
-  
-
-**移动文件**
+### 4.8 移动文件
 
   GIT中可以使用`git mv`命令来移动文件，例如我们将b.txt文件重命名为e.txt文件。
 
@@ -410,9 +398,7 @@ GIT笔记
   git add e.txt
   ```
 
-
-
-**查看提交历史**
+### 4.9 查看提交历史
 
   前面我们已经介绍了使用`git log`命令来查看提交的历史，下面我们来仔细的了解这个命令是如何工作的。在不加入任何参数的情况下，这个命令会列出每个提交的SHA-1校验和、作者的名字和Email地址、提交的时间和提交说明。
 
@@ -498,9 +484,7 @@ GIT笔记
    1 file changed, 1 insertion(+)
   ```
 
-
-
-**撤销操作**
+### 4.10 撤销操作
 
   在任何时候，你都可以进行撤销的动作。假如在我们提交完成后发现有几个文件没有添加，或提交信息写错了，此时就可以使用`git commit --amend`命令来进行重新提交。
 
@@ -512,9 +496,7 @@ GIT笔记
   git commit --amend
   ```
 
-
-
-**远程仓库**
+## 五、远程仓库
 
   远程仓库是为了能和更多的同学协同工作，使用`git remote`命令查看已经配置的远程仓库。
 
@@ -580,11 +562,221 @@ GIT笔记
   git remote #无打印
   ```
 
+## 六、tag
 
+  GIT可以给仓库中历史记录上的任意一个commit打上标签，用来表示此commit是一个重要的结点。例如每次发布版本的时候可以使用这个功能来标记。对应的命令是`git tag`。
 
+  假设我们已经更新了e.txt文件，然后对它打上`v0.1`标签。
 
-
+  ```shell
+  echo "This is test tag v0.1" >> e.txt
+  git add e.txt
+  git tag -a v0.1 -m "This is v0.1 version" # 如果不指定commit，默认tag打到这此commit上。
+  git tag  # 打印已有tag 
+  v0.1
+  git show v0.1 # 打印如下
+  tag v0.1
+  Tagger: Rick <Rick@city.com>
+  Date:   Fri Dec 16 10:19:35 2022 +0800
   
+  This is v0.1 version
+  
+  commit e2af180575ff8683c2183f88c18d605ac68b66ee (HEAD -> master, tag: v0.1)
+  
+  ```
+
+  `-a`参数是创建标签，`-m`参数是指定存储的标签信息，如果不指定则GIT会自动启动编辑器要求你输入信息。
+
+  `git show`命令是查看标签信息和对应的提交信息。
+
+  给**历史版**本打`TAG`，则在使用`git tag`命令时指定校验和即可：
+
+  ```shell
+  git log --pretty=oneline # 查看所有的commit，打印如下
+  e2af180575ff8683c2183f88c18d605ac68b66ee (HEAD -> master, tag: v0.1) delete r.txt
+  13ddf40f9bfc2da51505b495489f8df8e2e98d7c add r.txt
+  e3a22f650d632934e13e4c9a5d0cad40944a62f3 add test 2 commit
+  f2d289611e1d812a482bad1435fd761c67eca515 add test commit
+  a3deb1399d76992442fbfc3def9d5a25e66ec651 test
+  aedf6bffc8ae24441922cf852c9f96d8d6d3009e Add I'm B
+  ```
+
+  假如，我们原本要在`test`的commit时加上`v0.0`的 `TAG`，则只需要这样操作：
+
+  ```shell
+  git tag -a v0.0 a3de -m "This is v0.0 version"
+  git tag # 打印如下
+  v0.0
+  v0.1
+  ```
+
+  共享标签，默认情况下`git push`命令不会将标签推送到远端仓库，所以如果想推送到远端仓库，则需要使用`git push <re_name> <tag_name>`命令。
+
+  ```shell
+  echo "This is Test Tag" > Test.txt
+  git add Test.txt
+  git tag -a v0.1 -m "This is v0.1 version"
+  git tag 
+  v0.1
+  git push origin v0.1 # 打印如下：
+  Enumerating objects: 1, done.
+  Counting objects: 100% (1/1), done.
+  Writing objects: 100% (1/1), 163 bytes | 163.00 KiB/s, done.
+  Total 1 (delta 0), reused 0 (delta 0), pack-reused 0
+  To github.com:Rick/test.git
+   * [new tag]         v0.1 -> v0.1
+  
+  ```
+
+  如果想要将本地的`TAG`统一全部推送到远端仓库，则可以使用`git push <re_name> --tags`命令，这会默认把所有不在远程仓库的`TAG`全部推送过去。
+
+  ```shell 
+  git push origin --tags
+  ```
+
+  删除`TAG`，有些标签不想使用后，可以使用`git tag -d <tag_name>`命令删除。
+
+  ```shell
+  git tag -d v0.1 # 打印如下：
+  Deleted tag 'v0.1' (was 34c1493)
+  ```
+
+  这个命令只会删除本地的`TAG`如果想要删除远程仓库的`TAG`则使用`git push <re_name> --delete <tag_name>`。
+
+  ```shell
+  git push origin --delete v0.1 # 删除远端仓库的v0.1 TAG，打印如下：
+  To github.com:Rick/test.git
+   - [deleted]         v0.1
+  ```
+
+## 七、GIT的分支
+
+  GIT的分支是最经常使用的功能，我们常常使用分支将工作从主线上`master`分离开来。这样在开发新的功能或特性时就不会影响主线。要了解GIT的分支原理，首先要知道当我们使用`git commit`命令提交后，GIT底层做了什么。首先，GIT会计算每个文件/目录的校验和，然后再GIT仓库中将这样校验和保存为一个**树对象**。随后，GIT便会创建一个**提交对象**，它包含执行暂存内容的快照指针、作者姓名、邮箱、提交时的信息和指向**树对象**的指针。
+
+  创建GIT分支的命令是`git branch <name>`。
+
+  ```shell
+  git branch test_branch
+  git branch # 查看当前工作的分支，*代表当时工作的分支。
+  * main
+    test_branch
+  ```
+
+  创建分支`test_branch`后，我们发现GIT并没有自动切换到该分支，如果要切换到该分支，则可以使用`git switch test_branch`或者`git checkout`命令。
+
+  ```shell
+  git switch test_branch
+  git branch # 此时，git已经切换到test_branch分支中 
+    main
+  * test_branch
+  ```
+
+  此时我们可以在`test_branch`分支下更改之前的文件。
+
+  ```shell
+  echo "This is test branch" >> Test.txt
+  git commit -a -m 'Change The Test.txt' # 提交Test.txt文件
+  ```
+
+  这时，我们在默认Master分支中开辟了另一个分支，且更新了部分内容。请注意，此时Master上的内容并未更改，如果修改完成后，且测试没有问题时，你便可以将此次分支合并到Master上。(让Master上保持最新的内容，这是一个好的习惯)
+
+  合并分支使用`git merge <sub_branch>`命令。注意在合并分支到Master时，要首先切换到Master分支上后再合并。
+
+  ```shell
+  git checkout master # checkout与switch都可以切换分支
+  git merge test_branch # 合并test_branch分支到Master，打印如下：
+  Updating 7b2ba49..63821a5
+  Fast-forward
+   Test.txt | 1 +
+   1 file changed, 1 insertion(+)
+  ```
+
+  此时，test_branch分支已经合并到Master中，我们便可以推送到远程仓库了。
+
+  ```shell
+  git push origin marster
+  ```
+
+  这时本地test_branch分支便可以删除。
+
+  ```shell
+  git branch -d test_branch
+  ```
+
+**GIT的分支合并冲突**
+
+  多人开发时候总是会遇到一些合并冲突的现象，例如大家都在在Master分支上新建了属于各自的分支，并做了修改，但是如果你们修改同一处的内容后，有人提前将自己的分支合并到Master后，此时你再合并时就会发现，提示合并冲突，你必须手动解决这些冲突后GIT才能完成合并。示例如下，假设你们共同开发一个good.txt文件，good.txt文件内容如下。
+
+  ```shell
+  cat good.txt # 打印如下：
+  This is a test
+  ABCDE
+  ```
+
+  现在，你在本地的Master分支上新建自己的分支，小王也在本地的Master分支上新建的自己的分支并修改了good.txt文件且提交到远程仓库中，小王修改good.txt文件如下：
+
+  ```shell
+  cat good.txt # 这是小王的修改后内容，他将第二行的ABCDE改为了ADEFG
+  This is a test
+  ADEFG
+  ```
+
+  而此时，你也在修改文件，且你并不知道小王已经修改了此文件且提交到了远程仓库，你修改后good.txt文件内容如下：
+
+  ```shell
+  cat good.txt # 打印结果如下：
+  This is a test
+  HJKLL
+  ```
+
+  这时你更新文件并推送到远程仓库后发现有问题，GIT提示你有文件冲突。
+
+  ```shell
+  From github.com:Rick/test
+   * branch            main       -> FETCH_HEAD
+     048f2c1..caf9eaa  main       -> origin/main
+  Auto-merging good.txt
+  CONFLICT (content): Merge conflict in good.txt
+  Automatic merge failed; fix conflicts and then commit the result.
+  ```
+
+  请注意，这时候GIT实际上是做了合并，但是没有自动创建一个新的合并提交。因为GIT会自动停止，等待你解决冲突。在产生冲突后，你可以使用`git status`命令来查看哪些文件因为冲突而处于未合并(unmerged)状态。
+
+  ```shell
+  git status # 打印如下：
+  On branch main
+  
+  Unmerged paths:
+    (use "git add <file>..." to mark resolution)
+          both modified:   good.txt
+  
+  no changes added to commit (use "git add" and/or "git commit -a")
+  ```
+
+  GIT提示我们有good.txt文件因为冲突而处于未合并状态，此时查看good.txt文件，你会发现GIT细心的将冲突部分识别出来了。
+
+  ```shell
+  cat good.txt # 查看此时合并后good.txt文件
+  This is a test
+  <<<<<<< HEAD
+  HJKLL
+  =======
+  ADEFG
+  >>>>>>> caf9eaa02691bbf8b6e451da58cc0369540626f2
+  ```
+
+  `<<<<<<`HEAD是表示目前Master分支所在的位置。`======`将文件分为了两部分，你必须选择其中一个部分作为最终修改的版本，另一个部分舍弃。所以如果你想保留我们修改的，而舍弃小王修改的，则必须将`<<<<`、`======`、`>>>>`和小王更改的部分全部删除，然后再使用`git add`重新提交此文件。此时GIT则认为你已经解决了冲突。(修改别人的代码时候要和别人保持沟通很重要)
+
+  ```shell
+  cat good.txt # 打印如下：
+  This is a test
+  HJKLL
+  git add good.txt
+  git commit -m "fix a some" good.txt
+  git push origin master
+  ```
+
+
 
   
 
