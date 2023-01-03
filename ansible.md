@@ -10,7 +10,9 @@
 
 
 
-**ansible**中的配置文件，ansible配置文件依次读取的顺序是：
+**ansible**中的配置文件：
+
+  ansible中的配置文件采用`ini`风格，ansible配置文件依次读取的顺序是：
 
 1. 环境变量`ANSIBLE_CONFIG`
 2. 当前目录中的ansible.cfg配置文件
